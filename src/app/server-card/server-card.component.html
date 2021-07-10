@@ -1,0 +1,42 @@
+<div class="flex items-center space-x-4 p-4 text-white bg-gray-900">
+  <div>
+    <img
+      class="border-4 border-gray-800"
+      src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/base/bf3/map_images/146x79/{{this.server.map|lowercase}}.jpg"
+      alt="Operation Metro"
+    />
+  </div>
+  <div class="flex-grow">
+    <!-- Header -->
+    <div class="flex">
+      <div class="flex items-center mr-2">
+        <img
+          src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/common/flags/{{this.server.raw.country|lowercase}}.gif"
+          alt="Brazil"
+        >
+      </div>
+      <h1 class="text-lg">{{server.name}}</h1>
+    </div>
+
+    <!-- Information -->
+    <h2 class="ml-8 text-sm text-gray-300 font-light">{{gametype()}} • {{map()}} • {{players()}} / {{maxPlayers()}}
+      players • {{duration()}}min duration</h2>
+
+    <!-- Ticket bars -->
+    <div class="mt-4 flex justify-center space-x-4">
+      <!-- First team bar -->
+      <div
+        class="flex justify-center items-center py-1 px-3 text-sm bg-gray-700 rounded-full"
+      >
+        {{server.raw.teams[0].tickets|number:'1.0-0'}} tickets
+      </div>
+
+      <!-- Second team bar -->
+      <div
+        class="flex justify-center items-center py-1 px-3 text-sm bg-gray-700 rounded-full"
+      >
+        {{server.raw.teams[1].tickets|number:'1.0-0'}} tickets
+      </div>
+    </div>
+  </div>
+</div>
