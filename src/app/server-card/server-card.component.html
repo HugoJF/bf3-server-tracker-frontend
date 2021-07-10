@@ -1,41 +1,41 @@
-<div class="flex items-center space-x-4 p-4 text-white bg-gray-900">
-  <div>
+<div class="flex flex-col sm:flex-row items-center space-x-4 p-4 my-4 text-white border border-gray-800">
+  <div class="mb-4 sm:mb-0">
     <img
-      class="border-4 border-gray-800"
       src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/base/bf3/map_images/146x79/{{this.server.map|lowercase}}.jpg"
-      alt="Operation Metro"
+      alt="{{map()}}"
     />
   </div>
-  <div class="flex-grow">
+  <div>
     <!-- Header -->
     <div class="flex">
       <div class="flex items-center mr-2">
         <img
+          width="16"
           src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/common/flags/{{this.server.raw.country|lowercase}}.gif"
           alt="Brazil"
         >
       </div>
-      <h1 class="text-lg">{{server.name}}</h1>
+      <h1 class="text-lg tracking-tight">{{server.name}}</h1>
     </div>
 
     <!-- Information -->
-    <h2 class="ml-8 text-sm text-gray-300 font-light">{{gametype()}} • {{map()}} • {{players()}} / {{maxPlayers()}}
-      players • {{duration()}}min duration</h2>
+    <h2 class="text-sm text-gray-300 font-light">{{gametype()}} • {{map()}} • {{duration()}}</h2>
 
     <!-- Ticket bars -->
-    <div class="mt-4 flex justify-center space-x-4">
+    <div class="mt-1 flex space-x-4">
       <!-- First team bar -->
       <div
-        class="flex justify-center items-center py-1 px-3 text-sm bg-gray-700 rounded-full"
+        class="flex justify-center items-center py-1 px-3 text-xs text-gray-300 font-light bg-gray-800 rounded-full"
       >
-        {{server.raw.teams[0].tickets|number:'1.0-0'}} tickets
+        {{players()}} / {{maxPlayers()}} players
       </div>
-
-      <!-- Second team bar -->
+      <!-- First team bar -->
       <div
-        class="flex justify-center items-center py-1 px-3 text-sm bg-gray-700 rounded-full"
+        class="flex justify-center items-center py-1 px-3 text-xs text-gray-300 font-light bg-gray-800 rounded-full"
       >
-        {{server.raw.teams[1].tickets|number:'1.0-0'}} tickets
+        <span>{{server.raw.teams[0].tickets|number:'1.0-0'}} tickets</span>
+        <span class="mx-1">×</span>
+        <span>{{server.raw.teams[1].tickets|number:'1.0-0'}} tickets</span>
       </div>
     </div>
   </div>

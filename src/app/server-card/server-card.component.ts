@@ -3,7 +3,8 @@ import {Server} from "../../types";
 
 @Component({
   selector: 'app-server-card[server]',
-  templateUrl: './server-card.component.html'
+  templateUrl: './server-card.component.html',
+  host: {class: 'contents'}
 })
 export class ServerCardComponent implements OnInit {
   @Input() server!: Server;
@@ -54,6 +55,14 @@ export class ServerCardComponent implements OnInit {
   }
 
   duration() {
-    return Math.ceil(this.server.raw.roundtime / 60);
+    let duration = Math.ceil(this.server.raw.roundtime / 60);
+
+    if (duration < 120) {
+      return `${duration} min`;
+    }
+
+    duration = Math.ceil(duration / 60);
+
+    return `${duration} hours`
   }
 }
