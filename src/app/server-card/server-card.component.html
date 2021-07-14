@@ -31,6 +31,7 @@
       </div>
       <!-- First team bar -->
       <div
+        *ngIf="server.raw.teams"
         class="flex justify-center items-center py-1 px-3 text-xs text-gray-300 font-light bg-gray-800 rounded-full"
       >
         <span>{{server.raw.teams[0].tickets|number:'1.0-0'}} tickets</span>

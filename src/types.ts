@@ -33,7 +33,7 @@ export interface ServerRaw {
   gametype:          string;
   roundsplayed:      number;
   roundstotal:       number;
-  teams:             Team[];
+  teams?:             Team[];
   targetscore:       number;
   status:            string;
   ranked:            boolean;
