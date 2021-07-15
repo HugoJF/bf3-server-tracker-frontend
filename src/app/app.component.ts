@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ServerQueryService} from "./services/server-query.service";
-import {Server, Servers} from "../types";
+import {Server} from "../types";
+import {Observable} from "rxjs";
+import {map, tap} from "rxjs/operators";
 
 const SERVERS = [
   '177.54.148.55:25210',  // https://battlelog.battlefield.com/bf3/servers/show/pc/ca70bac8-a86e-46fa-9b73-79a5828b9366/Le-Helicopterinho-Players-28-1000-Tickets-em-TDM/
@@ -17,32 +19,20 @@ const SERVERS = [
 })
 export class AppComponent implements OnInit {
   title = 'bf3-server-monitor';
-  servers: Servers | undefined;
+  loading = true;
+  servers$?: Observable<Server[]>;
 
   constructor(private query: ServerQueryService) {
   }
 
   ngOnInit(): void {
-    this
+    this.servers$ = this
       .query
       .query(SERVERS)
-      .subscribe(data => {
-        this.servers = data
-      });
-  }
-
-  goodServers() {
-    if (!this.servers) {
-      return {};
-    }
-
-    const servers = Object.entries(this.servers);
-
-    const good = servers.filter(([address, server]: [string, Server]) => server.name);
-
-    return good.reduce((acc, [address, server]) => ({
-      ...acc,
-      [address]: server,
-    }), {});
+      .pipe(
+        map(server => Object.values(server) as Server[]),
+        map(server => server.filter(server => server.name)),
+        tap(() => this.loading = false),
+      )
   }
 }
