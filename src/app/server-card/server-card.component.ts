@@ -18,6 +18,7 @@ export class ServerCardComponent implements OnInit {
   gametype() {
     const type = this.server.raw.gametype;
     const types: {[id: string]: string} = {
+      ConquestSmall0: 'Conquest',
       ConquestLarge0: 'Conquest Large',
       TeamDeathMatch0: 'Team Deathmatch',
       RushLarge0: 'Rush',
@@ -36,6 +37,7 @@ export class ServerCardComponent implements OnInit {
       MP_012: 'Operation Firestorm',
       MP_017: 'Noshahr Canals',
       MP_001: 'Grand Bazaar',
+      MP_007: 'Caspian Border',
       MP_Subway: 'Operation Metro',
     };
 
