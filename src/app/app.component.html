@@ -1,14 +1,16 @@
 <main class="container pt-8 mx-auto flex flex-col items-center">
   <div>
-    <h1 class="text-5xl text-white text-center font-black">Top massa do BF3</h1>
+    <h1 class="text-5xl text-white text-center font-black">{{header}}</h1>
 
     <div *ngIf="loading" class="flex justify-center my-8">
       <app-loading></app-loading>
     </div>
 
-    <app-server-card
-      *ngFor="let server of servers$ | async"
-      [server]="server"
-    ></app-server-card>
+    <div class="divide-y">
+      <app-server-card
+        *ngFor="let server of servers$ | async"
+        [server]="server"
+      ></app-server-card>
+    </div>
   </div>
 </main>

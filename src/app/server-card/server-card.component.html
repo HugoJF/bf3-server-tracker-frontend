@@ -1,6 +1,7 @@
-<div class="flex flex-col sm:flex-row items-center space-x-4 p-4 my-4 text-white border border-gray-800">
+<a href="" class="duration-300 group flex flex-col sm:flex-row items-center space-x-4 p-4 my-4 text-white hover:bg-gray-800 rounded-lg">
   <div class="mb-4 sm:mb-0">
     <img
+      class="rounded shadow-md"
       src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/base/bf3/map_images/146x79/{{this.server.map|lowercase}}.jpg"
       alt="{{map()}}"
     />
@@ -12,27 +13,28 @@
         <img
           width="16"
           src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/common/flags/{{this.server.raw.country|lowercase}}.gif"
-          alt="Brazil"
+          alt="{{this.server.raw.country}}"
         >
       </div>
-      <h1 class="text-lg tracking-tight">{{server.name}}</h1>
+      <h1 class="text-xl">{{server.name}}</h1>
     </div>
 
     <!-- Information -->
-    <h2 class="text-sm text-gray-300 font-light">{{gametype()}} • {{map()}} • {{duration()}}</h2>
+    <h2 class="text-gray-400 tracking-tight">{{gametype()}} • {{map()}} • {{duration()}}</h2>
 
-    <!-- Ticket bars -->
-    <div class="mt-1 flex space-x-4">
-      <!-- First team bar -->
+    <!-- Status -->
+    <div class="mt-1 flex space-x-4 text-sm tracking-tight">
+      <!-- Players -->
       <div
-        class="flex justify-center items-center py-1 px-3 text-xs text-gray-300 font-light bg-gray-800 rounded-full"
+        class="flex justify-center items-center py-1 px-3 text-gray-300 font-light bg-gray-800 rounded-full"
       >
         {{players()}} / {{maxPlayers()}} players
       </div>
-      <!-- First team bar -->
+
+      <!-- Tickets -->
       <div
         *ngIf="server.raw.teams"
-        class="flex justify-center items-center py-1 px-3 text-xs text-gray-300 font-light bg-gray-800 rounded-full"
+        class="flex justify-center items-center py-1 px-3 text-gray-300 font-light bg-gray-800 rounded-full"
       >
         <span>{{server.raw.teams[0].tickets|number:'1.0-0'}} tickets</span>
         <span class="mx-1">×</span>
@@ -40,4 +42,4 @@
       </div>
     </div>
   </div>
-</div>
+</a>

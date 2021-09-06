@@ -13,6 +13,20 @@ const SERVERS = [
   '68.232.174.155:25200', // BEER & RUSH 24/7 | CLASSIC MAPS | Noobs & Pros!
 ];
 
+const headers = [
+  '💯choro',
+  'Top massa do BF3',
+  'Tem metro?',
+  'Sem metro né?',
+  '"Só tem Nosharn Canals"',
+  '"Beer tá morto"',
+  '"Beer tá cheio"',
+  '"Hora do SpeedRunners?"',
+  'Falta de criatividade pra frases novas',
+  'VVVV o servidor vazio 😂 VVVV',
+  'Bolsonaro é corno',
+];
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
@@ -21,8 +35,10 @@ export class AppComponent implements OnInit {
   title = 'bf3-server-monitor';
   loading = true;
   servers$?: Observable<Server[]>;
+  header!: string;
 
   constructor(private query: ServerQueryService) {
+    this.header = headers[Math.floor(headers.length * Math.random())];
   }
 
   ngOnInit(): void {
