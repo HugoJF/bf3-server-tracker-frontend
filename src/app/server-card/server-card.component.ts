@@ -8,6 +8,7 @@ import {Server} from "../../types";
 })
 export class ServerCardComponent implements OnInit {
   @Input() server!: Server;
+  @Input() url!: string;
 
   constructor() {
   }

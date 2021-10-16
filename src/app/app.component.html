@@ -9,7 +9,8 @@
     <div class="divide-y">
       <app-server-card
         *ngFor="let server of servers$ | async"
-        [server]="server"
+        [url]="servers[server.ip]"
+        [server]="server.data"
       ></app-server-card>
     </div>
   </div>

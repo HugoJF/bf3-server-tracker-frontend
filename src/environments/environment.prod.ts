@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://lqk1l35pfl.execute-api.us-east-2.amazonaws.com/',
+  api: 'https://b7fe6wvpzf.execute-api.sa-east-1.amazonaws.com/',
 };
