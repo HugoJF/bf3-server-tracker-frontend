@@ -17,7 +17,7 @@ export class ServerCardComponent implements OnInit {
   }
 
   gametype() {
-    const type = this.server.raw.gametype;
+    const type = this.server.raw?.gametype;
     const types: { [id: string]: string } = {
       ConquestSmall0: 'Conquest',
       ConquestLarge0: 'Conquest Large',
@@ -77,15 +77,26 @@ export class ServerCardComponent implements OnInit {
   }
 
   players() {
-    return this.server.raw.numplayers;
+    return this.server.raw?.numplayers;
   }
 
   maxPlayers() {
     return this.server.maxplayers;
   }
 
+  tickets() {
+    const teams = this.server?.raw?.teams ?? [];
+    const tickets = teams.map(team => team?.tickets);
+
+    if (tickets.filter(Boolean).length !== 2) {
+      return undefined;
+    }
+
+    return tickets;
+  }
+
   duration() {
-    let duration = Math.ceil(this.server.raw.roundtime / 60);
+    let duration = Math.ceil(this.server.raw?.roundtime ?? 0 / 60);
 
     if (duration < 120) {
       return `${duration} min`;

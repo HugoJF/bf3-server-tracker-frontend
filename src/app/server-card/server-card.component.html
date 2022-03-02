@@ -1,4 +1,9 @@
-<a href="{{url}}" target="_blank" class="duration-300 group flex flex-col sm:flex-row items-center space-x-4 p-4 my-4 text-white hover:bg-gray-800 rounded-lg">
+<a
+  *ngIf="players() !== undefined"
+  href="{{url}}"
+  target="_blank"
+  class="duration-300 group flex flex-col sm:flex-row items-center space-x-4 p-4 my-4 text-white hover:bg-gray-800 rounded-lg"
+>
   <div class="mb-4 sm:mb-0">
     <img
       class="rounded shadow-md"
@@ -12,8 +17,8 @@
       <div class="flex items-center mr-2">
         <img
           width="16"
-          src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/common/flags/{{this.server.raw.country|lowercase}}.gif"
-          alt="{{this.server.raw.country}}"
+          src="https://cdn.battlelog.com/bl-cdn/cdnprefix/1323198/public/common/flags/{{this.server.raw?.country|lowercase}}.gif"
+          alt="{{this.server.raw?.country}}"
         >
       </div>
       <h1 class="text-xl">{{server.name}}</h1>
@@ -33,12 +38,12 @@
 
       <!-- Tickets -->
       <div
-        *ngIf="server.raw.teams"
+        *ngIf="tickets() as tickets"
         class="flex justify-center items-center py-1 px-3 text-gray-300 font-light bg-gray-800 rounded-full"
       >
-        <span>{{server.raw.teams[0].tickets|number:'1.0-0'}} tickets</span>
+        <span>{{tickets[0]|number:'1.0-0'}} tickets</span>
         <span class="mx-1">×</span>
-        <span>{{server.raw.teams[1].tickets|number:'1.0-0'}} tickets</span>
+        <span>{{tickets[1]|number:'1.0-0'}} tickets</span>
       </div>
     </div>
   </div>
